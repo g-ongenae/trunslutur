@@ -1,3 +1,5 @@
+import { Vowels } from './Vowels';
+
 /**
  * Vowels transformation by counter
  */
@@ -38,13 +40,23 @@ export class Numbers {
   /**
    * Transform a text from a vowels as count to a readable format
    */
-  // TODO Implement this method
   decode(sentence = '') {
-    // NOTE: Easy solution
-    // 1. Replace the numbers by a random vowels
-    //    Except if two numbers are consecutive
-    //    (as a word of 10 vowels shouldn't exists and numbers to exists)
-    // 2. Call Vowels.decode which will do the hard work
-    return sentence;
+    let newSentence = '';
+
+    for (let i = 0; i < sentence.length; i++) {
+      // Only replace from 1 to 6 because there's no case of 7 consecutive vowels in french
+      // See http://cruciverbiste.club/index.php?id_cms=172&controller=cms
+      if (
+        /[1-6]/.test(sentence[i]) &&
+        (i === 0 || /\D/.test(sentence[i - 1])) &&
+        (i === sentence.length - 1 || /\D/.test(sentence[i + 1]))
+      ) {
+        newSentence += 'a';
+      } else {
+        newSentence += sentence.charAt(i);
+      }
+    }
+
+    return new Vowels().decode(newSentence);
   }
 }
