@@ -1,0 +1,61 @@
+h1 {
+  text-align: center;
+  font-style: italic;
+  color: #f4d75e;
+  margin-top: 0em;
+  margin-bottom: 0;
+}
+
+p {
+  text-align: center;
+  color: #7c7b89;
+  font-size: 0.5em;
+  margin-top: 0;
+}
+
+p:hover span#uwu {
+  display: none;
+}
+
+p:hover span:after {
+  content: 'awe';
+  color: blue;
+}
+
+body {
+  background-color: #f1e4de;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+textarea {
+  margin: 5px;
+  padding: 10px;
+  resize: none;
+  border: 3px solid #e9723d;
+  border-radius: 2%;
+  font-size: 0.625em;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 1em;
+  width: 100%;
+  font-size: 1rem;
+  color: #7c7b89;
+  text-align: center;
+}
+
+footer a {
+  color: #0b7fab;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
