@@ -42,6 +42,7 @@ export class Numbers {
    */
   decode(sentence = '') {
     let newSentence = '';
+    const letters = ['a', 'aa', 'aaa', 'aaaa', 'aaaaa', 'aaaaaa'];
 
     for (let i = 0; i < sentence.length; i++) {
       // Only replace from 1 to 6 because there's no case of 7 consecutive vowels in french
@@ -51,7 +52,7 @@ export class Numbers {
         (i === 0 || /\D/.test(sentence[i - 1])) &&
         (i === sentence.length - 1 || /\D/.test(sentence[i + 1]))
       ) {
-        newSentence += 'a';
+        newSentence += letters[Number(sentence[i]) - 1];
       } else {
         newSentence += sentence.charAt(i);
       }
