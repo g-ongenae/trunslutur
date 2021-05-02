@@ -10,26 +10,29 @@ export class Numbers {
    *  - 'R1pl1ce 1ll v1w1ls t1 th2r c2nt by gr2ps'
    */
   code(sentence = '') {
-    // TODO Refactor to remove this variable
     let sum = 0;
 
-    return sentence
-      .split('')
-      .reduce((accumulator, letter) => {
-        // TODO Extract and build regexes
-        if (/[aáàâäãåāeéèêëęėēiìîïìįoòôöóõøōuùûüúūyÿ]/i.test(letter)) {
-          sum += 1;
-        } else if (/[æœ]/i.test(letter)) {
-          sum += 2;
-        } else {
-          const tmp = sum === 0 ? letter : `${sum}${letter}`;
-          sum = 0;
-          accumulator.push(tmp);
-        }
+    const newSentence = sentence.split('').reduce((accumulator, letter) => {
+      // TODO Extract and build regexes
+      if (/[aáàâäãåāeéèêëęėēiìîïìįoòôöóõøōuùûüúūyÿ]/i.test(letter)) {
+        sum += 1;
+      } else if (/[æœ]/i.test(letter)) {
+        sum += 2;
+      } else {
+        const tmp = sum === 0 ? letter : `${sum}${letter}`;
+        sum = 0;
+        accumulator.push(tmp);
+      }
 
-        return accumulator;
-      }, [])
-      .join('');
+      return accumulator;
+    }, []);
+
+    // Fix last char of the sentence is missing due to being a a vowel
+    if (sum !== 0) {
+      newSentence.push(sum);
+    }
+
+    return newSentence.join('');
   }
 
   /**
