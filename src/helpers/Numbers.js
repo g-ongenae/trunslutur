@@ -1,9 +1,11 @@
-import { Vowels } from './Vowels';
-
 /**
  * Vowels transformation by counter
  */
 export class Numbers {
+  constructor(vowels) {
+    this.vowels = vowels;
+  }
+
   /**
    * Replace all vowels to their count by groups
    *
@@ -58,6 +60,6 @@ export class Numbers {
       }
     }
 
-    return new Vowels().decode(newSentence);
+    return this.vowels.decode(newSentence);
   }
 }

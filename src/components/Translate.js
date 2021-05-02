@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Numbers } from '../helpers';
 
 /**
  * Translate component
@@ -10,8 +9,10 @@ import { Numbers } from '../helpers';
 export class Translate extends Component {
   constructor(props) {
     super(props);
+    this.numbers = props.numbers;
+
     this.state = {
-      coded: new Numbers().code(props.defaultSentence),
+      coded: this.numbers.code(props.defaultSentence),
       decoded: props.defaultSentence,
     };
 
@@ -25,14 +26,14 @@ export class Translate extends Component {
       case 'coded':
         this.setState({
           coded: value,
-          decoded: new Numbers().decode(value),
+          decoded: this.numbers.decode(value),
         });
         break;
 
       case 'decoded':
         this.setState({
           decoded: value,
-          coded: new Numbers().code(value),
+          coded: this.numbers.code(value),
         });
         break;
 
