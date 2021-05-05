@@ -50,7 +50,13 @@ export class Vowels {
           return word;
         }
 
+        // Return the first exact match in the dictionary, if no exact match use levenshtein
         const simplifiedWord = word.replace(/[aeiouy]/g, 'a');
+        const matchingWords = this.words
+          .filter((w) => word.length === w.length && this.code(w) === simplifiedWord);
+        if (matchingWords.length >= 1) {
+          return matchingWords[0];
+        }
 
         // Find words of the same length and modify them to correct levenshtein distance
         // Then find the closest word in the distance of levenshtein
